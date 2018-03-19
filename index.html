@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CleanGolf</title>
+</head>
+<body>
+
+<script>
+
+    // 에라토스테네스의 체
+    (function () {
+        'use strict'
+
+        const target = (function () {
+            const arr = [];
+            for (let i = 2; i <= 1000; i++) {
+                arr.push(i);
+            }
+            return arr;
+        })();
+
+        const method1 = function (target) {
+            const result = [];
+            const temp = deepCopy(target);
+            let n = 0;
+
+            while (temp.length) {
+                n = temp.shift();
+                result.push(n);
+
+                for(let i= temp.length -1; i >= 0; i--){
+                    if(temp[i] % n ===0){
+                        temp.splice(i,1);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        console.log(method1(target));
+
+        function deepCopy(arr) {
+            const result = [];
+            arr.forEach(x => result.push(x));
+            return result;
+        }
+
+    })()
+
+</script>
+
+</body>
+</html>
